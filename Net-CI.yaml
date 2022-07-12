@@ -1,31 +1,24 @@
 steps:
-    - checkout: self
-    - task: NuGetToolInstaller@1
-      displayName: Use NuGet
-      inputs:
-        checkLatest: true
-        version: 6.0
-    - task: DotNetCoreCLI@2
-      displayName: Restore
-      inputs:
-        command: restore
+     - checkout: self
+     - task: DotNetCoreCLI@2
+       displayName: Restore
+       inputs:
+        command: restore 
         projects: ${{variables.solution}}
-    - task: DotNetCoreCLI@2
-      displayName: Build
-      inputs:
+     - task: DotNetCoreCLI@2
+       displayName: Build
+       inputs:
         arguments: --configuration ${{variables.buildConfiguration}}
         projects: ${{variables.solution}}
-    
-    - task: DotNetCoreCLI@2
-      displayName: Publish
-      inputs:
-       command: publish
-       publishWebProjects: True
-       arguments: --configuration ${{variables.buildConfiguration}} --output $(build.artifactstagingdirectory)
-       zipAfterPublish: True
-    - task: PublishBuildArtifacts@1
-      displayName: 'Publish Artifact'
-      inputs:
-       PathtoPublish: '$(build.artifactstagingdirectory)'
-       ArtifactName: 'drop' 
-       
+     - task: DotNetCoreCLI@2
+       displayName: Publish
+       inputs:
+        command: publish
+        publishWebProjects: True
+        arguments: --configuration ${{variables.buildConfiguration}} --output $(build.artifactstagingdirectory)
+        zipAfterPublish: True
+     - task: PublishBuildArtifacts@1
+       displayName: 'Publish Artifact'
+       inputs:
+        PathtoPublish: '$(build.artifactstagingdirectory)'
+        ArtifactName: 'drop'
