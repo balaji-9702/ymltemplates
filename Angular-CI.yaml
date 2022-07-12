@@ -1,1 +1,2 @@
-
+steps:
+  - script: echo "This is Angular project"
