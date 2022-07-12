@@ -8,14 +8,14 @@ steps:
      - task: DotNetCoreCLI@2
        displayName: Build
        inputs:
-        arguments: --configuration ${{variables.buildConfiguration}}
+        arguments: '--configuration ${{variables.buildConfiguration}}'
         projects: ${{variables.solution}}
      - task: DotNetCoreCLI@2
        displayName: Publish
        inputs:
         command: publish
         publishWebProjects: True
-        arguments: --configuration ${{variables.buildConfiguration}} --output $(build.artifactstagingdirectory)
+        arguments: '--configuration ${{variables.buildConfiguration}} --output $(build.artifactstagingdirectory)'
         zipAfterPublish: True
      - task: PublishBuildArtifacts@1
        displayName: 'Publish Artifact'
