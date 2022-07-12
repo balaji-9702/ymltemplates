@@ -1,5 +1,4 @@
 steps:
-    - checkout: self
       clean: true
     - task: NuGetToolInstaller@1
       displayName: Use NuGet
