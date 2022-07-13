@@ -1,4 +1,5 @@
 steps:
+    - ${{ if eq('${{variables.unittest}}, 'true') }}:
     - checkout: self
     - task: DotNetCoreCLI@2
       displayName: Restore
