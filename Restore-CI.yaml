@@ -1,6 +1,6 @@
 steps:
-    - ${{ if eq('${{variables.unittest}}', 'true') }}:
     - checkout: self
+    - condition: eq('${{variables.unittest}}', 'true')
     - task: DotNetCoreCLI@2
       displayName: Restore
       inputs:
